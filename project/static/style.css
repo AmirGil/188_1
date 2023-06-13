@@ -1,0 +1,301 @@
+/* Overall page styling */
+body {
+  background: linear-gradient(to right, #D4E6F1, #3498DB);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  .logobird {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 100px;
+    height: 100px;
+    background-image: url('./logobird.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .logoairforce {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background-image: url('./logoairforce.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+h1 {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Table styling */
+table {
+  background-color: rgb(180, 221, 234);
+  border-radius: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+thead {
+  background-color: lightblue;
+  color: rgb(0, 0, 0);
+}
+
+thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tr:hover {
+  opacity: 0.8;
+}
+
+/* Input field styling */
+input[type="number"] {
+  width: 80px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Average box styling */
+.average-box {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Button styling */
+button {
+  background-color: rgb(180, 221, 234);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: black;
+  font-weight: bold;
+  transition: opacity 0.6s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Mouse hover transition */
+table,
+input[type="number"],
+.average-box,
+button {
+  transition: opacity 0.6s ease;
+}
+
+/* Font styling */
+th,
+td,
+input[type="number"],
+.average-box,
+button {
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+h1,
+th,
+td {
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+caption {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+table:hover,
+input[type="number"]:hover,
+.average-box:hover,
+button:hover {
+  background-color: rgb(153, 204, 255);
+  transition: 0.9s ease;
+}
+
+/* Signup Page */
+.signup-page {
+  background: linear-gradient(to right, #D4E6F1, #3498DB);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-page form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: slide-in 0.5s ease;
+}
+
+.signup-page h2 {
+  color: #2980B9;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.signup-page input[type="text"],
+.signup-page input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.signup-page .submit-button {
+  background-color: #2980B9;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-page .submit-button:hover {
+  background-color: #1E8BC3;
+}
+
+.signup-page .login-link {
+  display: block;
+  margin-top: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.signup-page .login-link:hover {
+  color: #1E8BC3;
+}
+
+/* Signin Page */
+/* Login Page */
+.login-page {
+  background: linear-gradient(to right, #D4E6F1, #3498DB);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: slide-in 0.5s ease;
+}
+
+.login-page form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: slide-in 0.5s ease;
+}
+
+.login-page h2 {
+  color: #2980B9;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.login-page input[type="text"],
+.login-page input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.login-page .submit-button {
+  background-color: #2980B9;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-page .submit-button:hover {
+  background-color: #1E8BC3;
+}
+
+.login-page .signup-link {
+  display: block;
+  margin-top: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.login-page .signup-link:hover {
+  color: #1E8BC3;
+}
+
+/* Keyframes for Animation */
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grades Page */
+.grades-page {
+  background-image: url('grades_background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grades-page h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+}
+
+.grades-page .grade {
+  font-size: 64px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
