@@ -4,26 +4,28 @@ body {
   padding: 20px;
   font-family: Arial, sans-serif;
   text-align: center;
-  .logobird {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 100px;
-    height: 100px;
-    background-image: url('./logobird.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .logoairforce {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 150px;
-    height: 150px;
-    background-image: url('./logoairforce.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
+}
+
+.logobird {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 100px;
+  height: 100px;
+  background-image: url('./logobird.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.logoairforce {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+  height: 150px;
+  background-image: url('./logoairforce.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -146,7 +148,7 @@ button:hover {
   justify-content: center;
 }
 
-.signup-page form {
+#signup-form {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 10px;
@@ -154,14 +156,14 @@ button:hover {
   animation: slide-in 0.5s ease;
 }
 
-.signup-page h2 {
+#signup-form h2 {
   color: #2980B9;
   font-size: 28px;
   margin-bottom: 20px;
 }
 
-.signup-page input[type="text"],
-.signup-page input[type="password"] {
+#signup-form input[type="text"],
+#signup-form input[type="password"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -169,7 +171,7 @@ button:hover {
   border: none;
 }
 
-.signup-page .submit-button {
+#signup-form .submit-button {
   background-color: #2980B9;
   color: #fff;
   padding: 10px 20px;
@@ -179,21 +181,32 @@ button:hover {
   transition: background-color 0.3s ease;
 }
 
-.signup-page .submit-button:hover {
+
+#signup-form .submit-button:hover {
   background-color: #1E8BC3;
 }
 
-.signup-page .login-link {
-  display: block;
-  margin-top: 10px;
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
+.login-container {
+  margin-top: 20px;
 }
 
-.signup-page .login-link:hover {
-  color: #1E8BC3;
+.login-container span {
+  color: #333;
+  font-weight: bold;
+}
+
+.login-container .login-button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container .login-button:hover {
+  background-color: #1E8BC3;
 }
 
 /* Signin Page */
@@ -206,20 +219,14 @@ button:hover {
   justify-content: center;
 }
 
-.login-page form {
+.login-page-box{
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
+  margin: 15vw;
+  padding: 20vw;
   border-radius: 10px;
   text-align: center;
   animation: slide-in 0.5s ease;
-}
-
-.login-page form {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  animation: slide-in 0.5s ease;
+  justify-content: center;
 }
 
 .login-page h2 {
