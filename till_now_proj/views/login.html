@@ -1,0 +1,27 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="logobird"></div>
+  <div class="logoairforce"></div>
+  <div class="signup-page">
+    <div id="signup-form">
+      <form id="signup-form" action="/formLogin" method="post">
+        <h2>Log In</h2>
+        <input type="text" id="Email" name="Email" placeholder="Email">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <input class="submit-button" type="submit" value="login">
+
+      </form>
+      <div class="login-container">
+        <span>Don't have an account yet?</span>
+      <button class="signup-button" onclick="location.href='/signup'">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

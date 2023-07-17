@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Student Average Calculator</title>
+    
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logobird"></div>
+    <div class="logoairforce"></div>
+    <h1>University Student Average Calculator</h1>
+    <h2>First Year</h2>
+    <table id="semester1" class="semester">
+        <caption>מכין</caption>
+        <br><br>
+        <thead>
+            <tr>
+                <th>קורס</th>
+                <th>נקודות זכות</th>
+                <th>ציון</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>חדו"א 1</td>
+                <td>6</td>
+                <form action="/formHedva" method="post">
+                <td><input name="hadua1" id="hadua1-grade" type="number"  min="0" max="100" step="1" placeholder=""> <input type="submit"  value="save"></td>
+                </form>
+            </tr>
+            <tr>
+                <td>פיזיקה 1</td>
+                <td>4</td>
+                <form action="/formfizica" method="post">
+                <td><input name="fizica" id="fizica-grade" type="number" min="0" max="100" step="1"><input type="submit" placeholder="" value="save"></td>
+                </form>
+            </tr>
+            <tr>
+                <td>מעם למדינה</td>
+                <td>2</td>
+                <form action="/formmeamlemdina" method="post">
+                <td><input name="meamlemdina" id="meam-grade" type="number" min="0" max="100" step="1"><input type="submit" placeholder="" value="save"></td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <button onclick="calculateSemesterAverage('semester1')">Calculate Semester 1 Average</button>
+    <p></p>
+    <div>
+        Semester 1 Average: <span id="semester1-average"></span><br>
+    </div>
+    <br><br>
+    <table id="semester2" class="semester">
+        <caption>בסיסי</caption>
+        <br><br>
+        <thead>
+            <tr>
+                <th>קורס</th>
+                <th>נקודות זכות</th>
+                <th>ציון</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>מטאורולוגיה</td>
+                <td>3</td>
+                <td><input type="number" min="0" max="100" step="1"></td>
+            </tr>
+            <tr>
+                <td>פלטפורמה</td>
+                <td>3</td>
+                <td><input type="number" min="0" max="100" step="1"></td>
+            </tr>
+            <tr>
+                <td>אווירודינמיקה</td>
+                <td>5.5</td>
+                <td><input type="number" min="0" max="100" step="1"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <button onclick="calculateSemesterAverage('semester2')">Calculate Semester 2 Average</button>
+    <p></p>
+    <div>
+        Semester 2 Average: <span id="semester2-average"></span><br>
+    </div>
+    <br><br>
+    <table id="semester3" class="semester">
+        <caption>ראשוני</caption><br><br><br><br>
+        <thead>
+            <tr>
+                <th>קורס</th>
+                <th>נקודות זכות</th>
+                <th>ציון</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>מכניקת טיסה - מטוסים\מסוקים</td>
+                <td>4</td>
+                <td><input type="number" min="0" max="100" step="1"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <button onclick="calculateSemesterAverage('semester3')">Calculate Semester 3 Average</button>
+    <p></p>
+    <div>
+        Semester 3 Average: <span id="semester3-average"></span><br>
+    </div>
+    <h2>Second Year</h2>
+    <br><br>
+    <p>Select your degree:</p>
+    <select id="degree" onchange="showSemesterTables()">
+        <option value="">Select a degree</option>
+        <option value="mis">Management Information Systems</option>
+        <option value="cs">Computer Science</option>
+        <option value="politics">Politics</option>
+        <option value="economics">Economics</option>
+    </select>
+    <div id="semesterTables">
+    </div>
+    <br><br>
+    <h2>Average Calculations</h2>
+    <button class="button" onclick="calculateOverallAverage()">Calculate Overall Average</button>
+    <br><br><br><br>
+    <div>
+        Overall Average: <span id="overall-average"></span>
+    </div>
+    <br><br>
+    <button onclick="generateRecommendation()">Generate Recommendation</button>
+    <p id="recommendation"></p>
+    <br><br><br><br><br><br>
+</body>
+</html>
