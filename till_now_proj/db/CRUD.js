@@ -6,7 +6,7 @@ const mysql = require('mysql2');
 
   const createTable = (req, res) => {
     const createQuery = 
-    'CREATE TABLE IF NOT EXISTS Users (name VARCHAR(255) NOT NULL,password VARCHAR(255) NOT NULL,email VARCHAR(255) PRIMARY KEY,hadua1 DECIMAL(5, 2) DEFAULT NULL,fizica DECIMAL(5, 2) DEFAULT NULL,meamlemdina DECIMAL(5, 2) DEFAULT NULL)';
+    'CREATE TABLE IF NOT EXISTS Users (name VARCHAR(255) NOT NULL,password VARCHAR(255) NOT NULL,email VARCHAR(255) PRIMARY KEY,hadua1 DECIMAL(5, 2) DEFAULT NULL,fizica DECIMAL(5, 2) DEFAULT NULL,meamlemdina DECIMAL(5, 2) DEFAULT NULL, b1 DECIMAL(5, 2) DEFAULT NULL,b2 DECIMAL(5, 2) DEFAULT NULL,b3 DECIMAL(5, 2) DEFAULT NULL, r DECIMAL(5, 2) DEFAULT NULL)';
     sql.query(createQuery, (err, result) => {
       if (err) {
         console.error('Error creating table:', err);
@@ -30,6 +30,86 @@ const mysql = require('mysql2');
     })};
 
 
+  const insertGradesmehin = (req, res) => {
+    const user = req.cookies.nameUser;
+    //const newGrade = {
+    //  Grade: req.body.fizica
+    //};
+    const Grades = [req.body.hadua1, req.body.fizica, req.body.meamlemdina];
+  const Subjects = ['hadua1', 'fizica', 'meamlemdina'];
+
+  for (let i = 0; i < Grades.length; i++) {
+    if (Grades[i] == '') {
+      Grades[i] = '0';
+    }
+  }
+  console.log(Grades);
+
+  const updateQuery = 'UPDATE Users SET hadua1 = ?, fizica = ?, meamlemdina = ? WHERE email = ?';
+      const values = [Grades[0], Grades[1], Grades[2], user];
+    sql.query(updateQuery, values, (updateErr, updateResult) => {
+      if (updateErr) {
+        console.error('Error updating grade: ', updateErr);
+        res.send('Something went wrong');
+        return;
+      }
+      res.redirect('/home');
+      console.log("success");
+    });
+  }; 
+  
+  const insertGradesbsisi = (req, res) => {
+    const user = req.cookies.nameUser;
+    //const newGrade = {
+    //  Grade: req.body.fizica
+    //};
+    const Grades = [req.body.b1, req.body.b2, req.body.b3];
+  const Subjects = ['b1', 'b2', 'b3'];
+
+  for (let i = 0; i < Grades.length; i++) {
+    if (Grades[i] == '') {
+      Grades[i] = '0';
+    }
+  }
+  console.log(Grades);
+  const updateQuery = 'UPDATE Users SET b1 = ?, b2 = ?, b3 = ? WHERE email = ?';
+      const values = [Grades[0], Grades[1], Grades[2], user];
+    sql.query(updateQuery, values, (updateErr, updateResult) => {
+      if (updateErr) {
+        console.error('Error updating grade: ', updateErr);
+        res.send('Something went wrong');
+        return;
+      }
+      res.redirect('/home');
+      console.log("success");
+    });
+  }; 
+
+  const insertGradesrishoni = (req, res) => {
+    const user = req.cookies.nameUser;
+    //const newGrade = {
+    //  Grade: req.body.fizica
+    //};
+    const Grades = req.body.r;
+  for (let i = 0; i < Grades.length; i++) {
+    if (Grades[i] == '') {
+      Grades[i] = '0';
+    }
+  }
+  console.log(Grades);
+  const updateQuery = 'UPDATE Users SET r = ? WHERE email = ?';
+      const values = [Grades , user];
+    sql.query(updateQuery, values, (updateErr, updateResult) => {
+      if (updateErr) {
+        console.error('Error updating grade: ', updateErr);
+        res.send('Something went wrong');
+        return;
+      }
+      res.redirect('/home');
+      console.log("success");
+    });
+  }; 
+   
 
   
 
@@ -49,6 +129,7 @@ const mysql = require('mysql2');
       console.log("success");
     });
   };
+
 
   const insertGrades1 = (req, res) => {
     const user = req.cookies.nameUser;
@@ -88,7 +169,7 @@ const mysql = require('mysql2');
   const getGrades = (req, res) => {
     const email = req.cookies.nameUser;
     const updateQuery =
-      'SELECT hadua1, fizica, meamlemdina FROM Users WHERE email = ?';
+      'SELECT hadua1, fizica, meamlemdina,b1,b2,b3,r FROM Users WHERE email = ?';
 
     sql.query(updateQuery, [email], (updateErr, updateResult) => {
       if (updateErr) {
@@ -99,8 +180,12 @@ const mysql = require('mysql2');
       res.cookie("h1", updateResult[0].hadua1);
       res.cookie("f1", updateResult[0].fizica);
       res.cookie("m1", updateResult[0].meamlemdina);
+      res.cookie("b1", updateResult[0].b1);
+      res.cookie("b2", updateResult[0].b2);
+      res.cookie("b3", updateResult[0].b3);
+      res.cookie("r", updateResult[0].r);
       console.log("success");
-      res.sendFile(path.join("C:/Users/user/Documents/repos/shigamer", "views/index.html"))
+      res.sendFile(path.join("C:/Users/user/Desktop/188_1/till_now_proj", "views/index.html"))
       return;
     });
   };
@@ -210,4 +295,4 @@ const selectAllUsers = (req,res)=>{
 };
 
 
-module.exports = {insertGrades1, insertGrades2, createTable, createNewUser, searchUser, selectAllUsers, loginCheck, insertGrades,dropTable, getGrades}
+module.exports = {insertGradesmehin,insertGradesbsisi, insertGradesrishoni, insertGrades1, insertGrades2, createTable, createNewUser, searchUser, selectAllUsers, loginCheck, insertGrades,dropTable, getGrades}

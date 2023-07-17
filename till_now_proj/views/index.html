@@ -12,6 +12,7 @@
     <h1>University Student Average Calculator</h1>
     <h2>First Year</h2>
     <table id="semester1" class="semester">
+        <form action="/formMechin" method="post">
         <caption>מכין</caption>
         <br><br>
         <thead>
@@ -25,25 +26,24 @@
             <tr>
                 <td>חדו"א 1</td>
                 <td>6</td>
-                <form action="/formHedva" method="post">
-                <td><input name="hadua1" id="hadua1-grade" type="number"  min="0" max="100" step="1" placeholder=""> <input type="submit"  value="save"></td>
-                </form>
+                <td><input name="hadua1" id="hadua1-grade" type="number"  min="0" max="100" step="1" placeholder=""></td>
             </tr>
             <tr>
                 <td>פיזיקה 1</td>
                 <td>4</td>
-                <form action="/formfizica" method="post">
-                <td><input name="fizica" id="fizica-grade" type="number" min="0" max="100" step="1"><input type="submit" placeholder="" value="save"></td>
-                </form>
+                <td><input name="fizica" id="fizica-grade" type="number" min="0" max="100" step="1"></td>
             </tr>
             <tr>
                 <td>מעם למדינה</td>
                 <td>2</td>
-                <form action="/formmeamlemdina" method="post">
-                <td><input name="meamlemdina" id="meam-grade" type="number" min="0" max="100" step="1"><input type="submit" placeholder="" value="save"></td>
-                </form>
+                <td><input name="meamlemdina" id="meam-grade" type="number" min="0" max="100" step="1"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit"  value="save"></td>
             </tr>
         </tbody>
+        </form>
     </table>
     <p></p>
     <button onclick="calculateSemesterAverage('semester1')">Calculate Semester 1 Average</button>
@@ -53,6 +53,7 @@
     </div>
     <br><br>
     <table id="semester2" class="semester">
+        <form action="/formBsisi" method="post">
         <caption>בסיסי</caption>
         <br><br>
         <thead>
@@ -66,19 +67,24 @@
             <tr>
                 <td>מטאורולוגיה</td>
                 <td>3</td>
-                <td><input type="number" min="0" max="100" step="1"></td>
+                <td><input name="b1" id="meteoro" type="number" min="0" max="100" step="1"></td>
             </tr>
             <tr>
                 <td>פלטפורמה</td>
                 <td>3</td>
-                <td><input type="number" min="0" max="100" step="1"></td>
+                <td><input name="b2" id="platforma" type="number" min="0" max="100" step="1"></td>
             </tr>
             <tr>
                 <td>אווירודינמיקה</td>
                 <td>5.5</td>
-                <td><input type="number" min="0" max="100" step="1"></td>
+                <td><input name="b3" id="aviro" type="number" min="0" max="100" step="1"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit"  value="save"></td>
             </tr>
         </tbody>
+    </form>
     </table>
     <p></p>
     <button onclick="calculateSemesterAverage('semester2')">Calculate Semester 2 Average</button>
@@ -88,6 +94,7 @@
     </div>
     <br><br>
     <table id="semester3" class="semester">
+        <form action="/formrishoni" method="post">
         <caption>ראשוני</caption><br><br><br><br>
         <thead>
             <tr>
@@ -100,9 +107,14 @@
             <tr>
                 <td>מכניקת טיסה - מטוסים\מסוקים</td>
                 <td>4</td>
-                <td><input type="number" min="0" max="100" step="1"></td>
+                <td><input name="r" id="rishoni" type="number" min="0" max="100" step="1"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit"  value="save"></td>
             </tr>
         </tbody>
+        </form>
     </table>
     <p></p>
     <button onclick="calculateSemesterAverage('semester3')">Calculate Semester 3 Average</button>

@@ -39,11 +39,15 @@ app.post('/formLogin', crud.loginCheck);
 
 
 //courses 
-app.post('/formHedva',crud.insertGrades);
+
+app.post('/formMechin',crud.insertGradesmehin);
+app.post('/formBsisi',crud.insertGradesbsisi);
+app.post('/formrishoni',crud.insertGradesrishoni);
 
 
-
-app.post('/formmeamlemdina', crud.insertGrades2);
+//app.post('/formHedva',crud.insertGrades);
+//app.post('/formfizica', crud.insertGrades1)
+//app.post('/formmeamlemdina', crud.insertGrades2);
 
 
 //// here you create the DB
@@ -55,7 +59,7 @@ app.post('/formLogin', crud.loginCheck);
 app.post('/insertGrade',crud.insertGrades);
 app.get('/dropTable', crud.dropTable);
 app.get('/home', crud.getGrades);
-app.post('/formfizica', crud.insertGrades1)
+
 
 //set up listen
 app.listen(port, ()=>{
