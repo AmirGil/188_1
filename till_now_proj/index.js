@@ -40,9 +40,16 @@ app.post('/formLogin', crud.loginCheck);
 
 //courses 
 
-app.post('/formMechin',crud.insertGradesmehin);
-app.post('/formBsisi',crud.insertGradesbsisi);
-app.post('/formrishoni',crud.insertGradesrishoni);
+app.post('/formMechin',crud.insertGrades);
+app.post('/formBsisi',crud.insertGrades);
+app.post('/formrishoni',crud.insertGrades);
+app.post('/formMis4',crud.insertGrades);
+app.post('/formMis5',crud.insertGrades);
+app.post('/formMis6',crud.insertGrades);
+app.post('/formCs4',crud.insertGrades);
+app.post('/formCs5',crud.insertGrades);
+app.post('/formCs6',crud.insertGrades);
+
 
 
 //app.post('/formHedva',crud.insertGrades);

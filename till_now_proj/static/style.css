@@ -84,8 +84,8 @@ input[type="number"] {
 }
 
 /* Button styling */
-button {
-  background-color: rgb(180, 221, 234);
+.button {
+  background-color: rgb(64, 189, 227);
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
@@ -95,7 +95,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.button:hover {
   opacity: 0.8;
 }
 
@@ -131,11 +131,11 @@ caption {
   margin-bottom: 10px;
 }
 
-table:hover,
+
 input[type="number"]:hover,
 .average-box:hover,
 button:hover {
-  background-color: rgb(153, 204, 255);
+  background-color: rgb(203, 229, 255);
   transition: 0.9s ease;
 }
 

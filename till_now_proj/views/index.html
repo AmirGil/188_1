@@ -40,13 +40,12 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit"  value="save"></td>
+                <td><input class="button" type="submit"  value="Calculate Semester 1 Average" onclick="calculateSemesterAverage('semester1')"></td>
             </tr>
         </tbody>
         </form>
     </table>
     <p></p>
-    <button onclick="calculateSemesterAverage('semester1')">Calculate Semester 1 Average</button>
     <p></p>
     <div>
         Semester 1 Average: <span id="semester1-average"></span><br>
@@ -81,13 +80,12 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit"  value="save"></td>
+                <td><input class="button" type="submit"  value="Calculate Semester 2 Average"></td>
             </tr>
         </tbody>
     </form>
     </table>
-    <p></p>
-    <button onclick="calculateSemesterAverage('semester2')">Calculate Semester 2 Average</button>
+    
     <p></p>
     <div>
         Semester 2 Average: <span id="semester2-average"></span><br>
@@ -105,23 +103,24 @@
         </thead>
         <tbody>
             <tr>
-                <td>מכניקת טיסה - מטוסים\מסוקים</td>
+                <td>מכניקת טיסה </td>
                 <td>4</td>
                 <td><input name="r" id="rishoni" type="number" min="0" max="100" step="1"></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit"  value="save"></td>
+                <td><input class="button" type="submit"  value="Calculate Semester 3 Average"></td>
             </tr>
         </tbody>
         </form>
     </table>
     <p></p>
-    <button onclick="calculateSemesterAverage('semester3')">Calculate Semester 3 Average</button>
     <p></p>
     <div>
         Semester 3 Average: <span id="semester3-average"></span><br>
     </div>
+
+
     <h2>Second Year</h2>
     <br><br>
     <p>Select your degree:</p>
