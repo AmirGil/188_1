@@ -1,77 +1,148 @@
+function getCookieValue(cookieName) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(cookieName + '=')) {
+        return cookie.substring(cookieName.length + 1);
+      }
+    }
+    return null;
+  }
+
+addEventListener("DOMContentLoaded", (event) => {
+    let d = getCookieValue("h1");
+    
+    if (d != "j%3Anull" && d !== "0.00")
+    {
+        document.getElementById("hadua1-grade").placeholder = d;
+    }
+    let f = getCookieValue("f1");
+    
+    if (f !== "j%3Anull" && f !== "0.00")
+    {
+        document.getElementById("fizica-grade").placeholder = f;
+    }
+
+    let m = getCookieValue("m1");
+    if (m != "j%3Anull" && m !== "0.00")
+    {
+        document.getElementById("meam-grade").placeholder = m;
+    }
+
+    let b1 = getCookieValue("b1");
+    
+    if (b1 != "j%3Anull" && b1 !== "0.00")
+    {
+        document.getElementById("meteoro").placeholder = b1;
+    }
+    let b2 = getCookieValue("b2");
+    
+    if (b2 !== "j%3Anull" && b2 !== "0.00")
+    {
+        document.getElementById("platforma").placeholder = b2;
+    }
+
+    let b3 = getCookieValue("b3");
+    if (b3 != "j%3Anull" && b3 !== "0.00")
+    {
+        document.getElementById("aviro").placeholder = b3;
+    }
+
+    let r = getCookieValue("r");
+    if (r != "j%3Anull" && r !== "0.00")
+    {
+        document.getElementById("rishoni").placeholder = r;
+    }
+
+    for(let x = 1; x <= 6; x++)
+        calculateSemesterAverage('semester' + x.toString());
+    
+    
+});
 
 function generateRecommendation() {
     var tables = document.getElementsByClassName('semester');
     var subjects = [];
-
+  
     // Loop through each table
     for (var i = 0; i < tables.length; i++) {
-        var table = tables[i];
-        var gradeInputs = table.querySelectorAll('input[type="number"]');
-
-        // Loop through each grade input in the table
-        for (var j = 0; j < gradeInputs.length; j++) {
-            var gradeInput = gradeInputs[j];
-            var grade = parseFloat(gradeInput.value);
-
-            // Only consider subjects with filled grades
-            if (!isNaN(grade)) {
-                var subjectRow = gradeInput.closest('tr');
-                var subjectName = subjectRow.querySelector('td:first-child').innerText;
-                var subjectCredits = parseFloat(subjectRow.querySelector('td:nth-child(2)').innerText);
-
-                // Add subject to the subjects array
-                subjects.push({
-                    name: subjectName,
-                    credits: subjectCredits,
-                    grade: grade
-                });
-            }
+      var table = tables[i];
+      var gradeInputs = table.querySelectorAll('input[type="number"]');
+  
+      // Loop through each grade input in the table
+      for (var j = 0; j < gradeInputs.length; j++) {
+        var gradeInput = gradeInputs[j];
+        var grade = parseFloat(gradeInput.value);
+  
+        // If the user's input is empty, use the placeholder value
+        if (isNaN(grade) && gradeInput.placeholder !== '') {
+          grade = parseFloat(gradeInput.placeholder);
         }
+  
+        // Only consider subjects with a valid grade
+        if (!isNaN(grade)) {
+          var subjectRow = gradeInput.closest('tr');
+          var subjectName = subjectRow.querySelector('td:first-child').innerText;
+          var subjectCredits = parseFloat(subjectRow.querySelector('td:nth-child(2)').innerText);
+  
+          // Add subject to the subjects array
+          subjects.push({
+            name: subjectName,
+            credits: subjectCredits,
+            grade: grade
+          });
+        }
+      }
     }
-
+  
     // Calculate the current average
     var totalCredits = 0;
     var totalGradePoints = 0;
-
-    subjects.forEach(function(subject) {
-        totalCredits += subject.credits;
-        totalGradePoints += subject.grade * subject.credits;
+  
+    subjects.forEach(function (subject) {
+      totalCredits += subject.credits;
+      totalGradePoints += subject.grade * subject.credits;
     });
-
+  
     var currentAverage = totalGradePoints / totalCredits;
-
+  
     // Sort subjects by their impact on the average
-    subjects.sort(function(a, b) {
-        var impactA = (currentAverage - a.grade) * a.credits;
-        var impactB = (currentAverage - b.grade) * b.credits;
-        return impactB - impactA;
+    subjects.sort(function (a, b) {
+      var impactA = (currentAverage - a.grade) * a.credits;
+      var impactB = (currentAverage - b.grade) * b.credits;
+      return impactB - impactA;
     });
-
+  
     // Get the recommended subject
     var recommendation = subjects[0].name;
-
+  
     // Display the recommendation
     var recommendationElement = document.getElementById('recommendation');
     recommendationElement.innerText = "Recommendation: " + recommendation;
-}
-
+  }
+  
 function calculateSemesterAverage(semesterId) {
     const table = document.getElementById(semesterId);
     const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
     let totalCredits = 0;
     let totalGrade = 0;
-  
-    for (let i = 0; i < rows.length; i++) {
+    for (let i = 0; i < rows.length - 1; i++) {
       const credits = parseFloat(rows[i].getElementsByTagName('td')[1].innerText);
       const gradeInput = rows[i].getElementsByTagName('td')[2].getElementsByTagName('input')[0];
-      const grade = parseFloat(gradeInput.value);
+      const gradePlaceholder = parseFloat(gradeInput.placeholder);
+      
+      let grade;
+      if (gradeInput.value !== '') {
+        grade = parseFloat(gradeInput.value);
+      } else {
+        grade = gradePlaceholder;
+      }
   
       if (!isNaN(grade)) {
         totalCredits += credits;
         totalGrade += grade * credits;
       }
     }
-  
     const semesterAverage = totalGrade / totalCredits;
     const averageSpan = document.getElementById(semesterId + '-average');
     averageSpan.innerText = semesterAverage.toFixed(2);
@@ -80,49 +151,53 @@ function calculateSemesterAverage(semesterId) {
   function calculateOverallAverage() {
     var tables = document.getElementsByClassName('semester');
     var subjects = [];
-
+  
     // Loop through each table
     for (var i = 0; i < tables.length; i++) {
-        var table = tables[i];
-        var gradeInputs = table.querySelectorAll('input[type="number"]');
-
-        // Loop through each grade input in the table
-        for (var j = 0; j < gradeInputs.length; j++) {
-            var gradeInput = gradeInputs[j];
-            var grade = parseFloat(gradeInput.value);
-
-            // Only consider subjects with filled grades
-            if (!isNaN(grade)) {
-                var subjectRow = gradeInput.closest('tr');
-                var subjectName = subjectRow.querySelector('td:first-child').innerText;
-                var subjectCredits = parseFloat(subjectRow.querySelector('td:nth-child(2)').innerText);
-
-                // Add subject to the subjects array
-                subjects.push({
-                    name: subjectName,
-                    credits: subjectCredits,
-                    grade: grade
-                });
-            }
+      var table = tables[i];
+      var gradeInputs = table.querySelectorAll('input[type="number"]');
+  
+      // Loop through each grade input in the table
+      for (var j = 0; j < gradeInputs.length; j++) {
+        var gradeInput = gradeInputs[j];
+        var grade = parseFloat(gradeInput.value);
+  
+        // If the user's input is empty, use the placeholder value
+        if (isNaN(grade) && gradeInput.placeholder !== '') {
+          grade = parseFloat(gradeInput.placeholder);
         }
+  
+        // Only consider subjects with a valid grade
+        if (!isNaN(grade)) {
+          var subjectRow = gradeInput.closest('tr');
+          var subjectName = subjectRow.querySelector('td:first-child').innerText;
+          var subjectCredits = parseFloat(subjectRow.querySelector('td:nth-child(2)').innerText);
+  
+          // Add subject to the subjects array
+          subjects.push({
+            name: subjectName,
+            credits: subjectCredits,
+            grade: grade
+          });
+        }
+      }
     }
-
+  
     // Calculate the overall average
     var totalCredits = 0;
     var totalGradePoints = 0;
-
-    subjects.forEach(function(subject) {
-        totalCredits += subject.credits;
-        totalGradePoints += subject.grade * subject.credits;
+  
+    subjects.forEach(function (subject) {
+      totalCredits += subject.credits;
+      totalGradePoints += subject.grade * subject.credits;
     });
-
+  
     var overallAverage = totalGradePoints / totalCredits;
-
+  
     // Display the overall average
     var overallAverageElement = document.getElementById('overall-average');
-    overallAverageElement.innerText =  overallAverage.toFixed(2);
-}
-
+    overallAverageElement.innerText = overallAverage.toFixed(2);
+  }
   
   function showSemesterTables() {
     var degree = document.getElementById('degree').value;
@@ -131,6 +206,7 @@ function calculateSemesterAverage(semesterId) {
     if (degree === 'mis') {
         semesterTables.innerHTML = `
         <table id="semester 4" class="semester">
+        <form action="/formFirstMis" method="post">
 <caption>semester 4</caption>
 <thead>
 <tr>
@@ -181,6 +257,7 @@ function calculateSemesterAverage(semesterId) {
     <td><input type="number" min="0" max="100" step="0.01"></td>
 </tr>
 </tbody>
+</form>
 </table>
 <p></p>
 <button onclick="calculateSemesterAverage('semester 4')">Calculate Semester 4 Average</button>

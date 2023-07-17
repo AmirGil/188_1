@@ -1,0 +1,7 @@
+Requirements:
+
+modules: express, path, mysql2, body-parser, cookie-parser, csv to json.
+delete path: dropTable.
+
+syntax for tables:
+'CREATE TABLE IF NOT EXISTS Users (name VARCHAR(255) NOT NULL,password VARCHAR(255) NOT NULL,email VARCHAR(255) PRIMARY KEY,hadua1 DECIMAL(5, 2) DEFAULT NULL, fizica DECIMAL(5, 2) DEFAULT NULL, meamlemdina DECIMAL(5, 2) DEFAULT NULL, b1 DECIMAL(5, 2) DEFAULT NULL, b2 DECIMAL(5, 2) DEFAULT NULL, b3 DECIMAL(5, 2) DEFAULT NULL, r DECIMAL(5, 2) DEFAULT NULL)';

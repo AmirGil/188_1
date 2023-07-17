@@ -12,13 +12,14 @@
     <div id="signup-form">
       <form id="signup-form" action="/formSignUp" method="post">
         <h2>Sign Up</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button class="submit-button" type="submit">Sign Up</button>
+        <input type="text" id="username" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" required>
+        <input type="email" id="Email" name="Email" placeholder="Email" required>
+        <input type="password" id="password" name="password" pattern="[a-zA-Z0-9]+" placeholder="Password" required>
+        <input class="submit-button" type="submit" value="submit">
       </form>
       <div class="login-container">
         <span>Already have an account?</span>
-        <button class="login-button" onclick="location.href='/'">Login</button>
+        <button class="login-button" onclick="location.href='/login'">Login</button>
       </div>
     </div>
   </div>
